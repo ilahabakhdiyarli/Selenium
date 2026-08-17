@@ -26,25 +26,22 @@ public class Task2 {
 
             menyuAc(wait, "Alerts & Modal");
 
-            // 1) alert() — accept
+        
             wait.until(elementToBeClickable(By.xpath("//button[normalize-space(.)='alert()']"))).click();
             Alert a1 = wait.until(alertIsPresent());
             System.out.println("alert()   : " + a1.getText());
             a1.accept();
 
-            // 2) confirm() — dismiss
             wait.until(elementToBeClickable(By.xpath("//button[normalize-space(.)='confirm()']"))).click();
             Alert a2 = wait.until(alertIsPresent());
             System.out.println("confirm() : " + a2.getText());
             a2.dismiss();
 
-            // 3) prompt() — ad yaz + accept
             wait.until(elementToBeClickable(By.xpath("//button[normalize-space(.)='prompt()']"))).click();
             Alert a3 = wait.until(alertIsPresent());
             System.out.println("prompt()  : " + a3.getText());
             a3.sendKeys("Ilaha");
             a3.accept();
-
 
             wait.until(elementToBeClickable(By.xpath("//button[contains(.,'Modal Aç')]"))).click();
             WebElement modalInput = wait.until(visibilityOfElementLocated(By.id("modalInput")));
