@@ -30,11 +30,9 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript(
                 "arguments[0].scrollIntoView({block: 'center'});", element);
     }
-    protected void setValueByJs(By locator, String value) {
+    protected void setValue(By locator, String value) {
         WebElement element = waitForVisible(locator);
-        ((JavascriptExecutor) driver).executeScript(
-                "arguments[0].value = arguments[1];" +
-                        "arguments[0].dispatchEvent(new Event('change'));",
-                element, value);
+        element.clear();
+        element.sendKeys(value);
     }
 }
